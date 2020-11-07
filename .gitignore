@@ -14,8 +14,10 @@
 .config/zsh/.zcompdump
 .config/zshnameddirrc
 .config/pulse
+.config.BraveSoftware
 
 .local/src
 .ssh
 
 work
+.pki
