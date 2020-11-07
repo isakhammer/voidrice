@@ -10,7 +10,7 @@ Follow this guide https://averagelinuxuser.com/a-step-by-step-arch-linux-install
 - -> /
 ' -> \
 * -> |
-æ -> ' 
+æ -> '
 
 ```
 
@@ -27,7 +27,7 @@ Check with `ping google.com`
 ```
 localectl list-keymaps # lists of maps
 loadkeys no-latin1
-localectl set-keymap --no-convert no-latin1 
+localectl set-keymap --no-convert no-latin1
 ```
 **Verify if EFI Bootmode (optional)**
 source: https://wiki.archlinux.org/index.php/Installation_guide#Wireless_2
@@ -91,7 +91,7 @@ myhostname
 KEYMAP=no-latin1
 ```
 
-I think this is used 
+I think this is used
 ```
 localectl set-keymap --no-convert keymap
 ```
@@ -100,7 +100,7 @@ localectl set-keymap --no-convert keymap
 **7. Wireless network**
 Source: https://www.youtube.com/watch?v=eHdP4sT7-8U&ab_channel=ChrisAtMachine
 ```
-pacman -S wireless_tools networkmanager network-manager-applet 
+pacman -S wireless_tools networkmanager network-manager-applet
 systemctl start NetworkManager
 systemctl enable NetworkManager
 nmtui
@@ -123,7 +123,7 @@ systemctl restart NetworkManager.service
 Norwegian keys
 
 ```
-~/.local/bin/remaps 
+~/.local/bin/remaps
 setxkbmap -layout no -option nodeadkeys
 ```
 
@@ -141,9 +141,9 @@ git config --global user.email "isakhammer@gmail.com"
 ```
 - Bluetooth connection
 Follow this tutorial https://www.jeremymorgan.com/tutorials/linux/how-to-bluetooth-arch-linux/
-You might want to add a additional step `sudo systemctl restart bluetooth.service' 
+You might want to add a additional step `sudo systemctl restart bluetooth.service'
 
-- Audio 
+- Audio
 ```
 sudo  pacman -S pulseaudi pavucontrol
 ```
@@ -154,7 +154,7 @@ Source : https://www.youtube.com/watch?v=9piWjL9x4SI
 
 **Problems**
 - Security Boot fail
-  
+
   Go into bios and turn of security boot.
 
 - Time sync issue
@@ -193,11 +193,17 @@ It can be quite hazzle to handle git stuff using LARBS, but this can be handled 
 # Check remote connection
 git remote -v
 
-# Set upstream 
+# Set upstream
 git remote add upstream https://github.com/lukesmithxyz/voidrice.git
 
-# Set origin as your fork 
+# Set origin as your fork
 git remote add origin https://github.com/isakhammer/voidrice.git
 ```
 Now you can use upstream and origin everytime you push or pull.
 
+- Generate SSH keys
+ Follow this  https://www.siteground.com/kb/generate_ssh_key_in_linux/
+
+and then this
+
+https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
