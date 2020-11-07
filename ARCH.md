@@ -193,11 +193,12 @@ It can be quite hazzle to handle git stuff using LARBS, but this can be handled 
 # Check remote connection
 git remote -v
 
-# Set upstream
+# Set upstream set url?
 git remote add upstream https://github.com/lukesmithxyz/voidrice.git
 
 # Set origin as your fork
-git remote add origin https://github.com/isakhammer/voidrice.git
+git remote set-url origin git@github.com:isakhammer/voidrice.git
+
 ```
 Now you can use upstream and origin everytime you push or pull.
 
