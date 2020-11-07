@@ -1,0 +1,8 @@
+.cache
+.bashrc
+.bash_profile
+.local/share/newsboat
+.local/share/weatherreport
+.local/share/xorg
+.local/share/nvim
+.local/src
