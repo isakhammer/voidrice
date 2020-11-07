@@ -7,6 +7,7 @@
 .local/share/weatherreport
 .local/share/xorg
 .local/share/nvim/
+.local/share/ranger/
 
 .config/nvim/plugged/
 .config/nvim/autoload/
