@@ -1,8 +1,13 @@
+.Xauthority
 .cache
 .bashrc
+.bash_logout
 .bash_profile
 .local/share/newsboat
 .local/share/weatherreport
 .local/share/xorg
-.local/share/nvim
+.local/config/nvim/plugged/
+.local/config/nvim/autoload/
+.local/config/zsh/.zcompdump
+.local/config/zshnameddirrc
 .local/src
