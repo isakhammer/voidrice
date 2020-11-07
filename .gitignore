@@ -6,8 +6,12 @@
 .local/share/newsboat
 .local/share/weatherreport
 .local/share/xorg
-.local/config/nvim/plugged/
-.local/config/nvim/autoload/
-.local/config/zsh/.zcompdump
-.local/config/zshnameddirrc
+.local/share/nvim/
+
+.config/nvim/plugged/
+.config/nvim/autoload/
+.config/zsh/.zcompdump
+.config/zshnameddirrc
+.config/pulse
+
 .local/src
