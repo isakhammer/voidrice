@@ -16,3 +16,6 @@
 .config/pulse
 
 .local/src
+.ssh
+
+work
