@@ -4,7 +4,8 @@
 .bash_logout
 .bash_profile
 .docker/
-.python_history/
+.python_history
+
 .local/share/newsboat
 .local/share/weatherreport
 .local/share/xorg
