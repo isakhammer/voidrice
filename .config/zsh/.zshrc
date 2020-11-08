@@ -79,3 +79,12 @@ bindkey '^e' edit-command-line
 
 # Load syntax highlighting; should be last.
 source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
+
+
+# Brightness
+
+function brightness(){
+	echo $1 > /sys/class/backlight/amdgpu_bl0/brightness
+}
+
+alias bb="brightness"
