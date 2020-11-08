@@ -208,3 +208,12 @@ Now you can use upstream and origin everytime you push or pull.
 and then this
 
 https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
+
+
+- To give docker permission
+```
+sudo usermod -aG docker $USER
+#logout
+sudo systemctl restart docker
+
+```
