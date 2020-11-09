@@ -217,3 +217,22 @@ sudo usermod -aG docker $USER
 sudo systemctl restart docker
 
 ```
+
+- Install spotify
+```
+yay -S spotify
+```
+But will probably give you a error.
+```
+:: Importing keys with gpg...
+gpg: keyserver receive failed: General error
+problem importing keys
+```
+
+Run this command with the given keys
+```
+gpg --keyserver pool.sks-keyservers.net --recv-keys 8FD3D9A8D3800305A9FFF259D1742AD60D811D58
+yay -S spotify
+```
+
+source :  https://bbs.archlinux.org/viewtopic.php?id=257441
