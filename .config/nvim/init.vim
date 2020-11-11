@@ -8,19 +8,27 @@ if ! filereadable(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autolo
 endif
 
 call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"'))
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-surround'
 Plug 'preservim/nerdtree'
 Plug 'junegunn/goyo.vim'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'jreybert/vimagit'
-Plug 'lukesmithxyz/vimling'
-Plug 'vimwiki/vimwiki'
+"Plug 'lukesmithxyz/vimling'
+"Plug 'vimwiki/vimwiki'
 Plug 'bling/vim-airline'
 Plug 'tpope/vim-commentary'
 Plug 'kovetskiy/sxhkd-vim'
-Plug 'ap/vim-css-color'
+"Plug 'ap/vim-css-color'
+Plug 'SirVer/ultisnips'
+Plug 'tpope/vim-fugitive'
+
 call plug#end()
 
+"""""""
+" BASICS
+"""""""
 set bg=light
 set go=a
 set mouse=a
@@ -39,30 +47,11 @@ set clipboard+=unnamedplus
 " Disables automatic commenting on newline:
 	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
-" Goyo plugin makes text more readable when writing prose:
-	map <leader>f :Goyo \| set bg=light \| set linebreak<CR>
-
 " Spell-check set to <leader>o, 'o' for 'orthography':
 	map <leader>o :setlocal spell! spelllang=en_us<CR>
 
 " Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
 	set splitbelow splitright
-
-" Nerd tree
-	map <leader>n :NERDTreeToggle<CR>
-	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-    if has('nvim')
-        let NERDTreeBookmarksFile = stdpath('data') . '/NERDTreeBookmarks'
-    else
-        let NERDTreeBookmarksFile = '~/.vim' . '/NERDTreeBookmarks'
-    endif
-
-" vimling:
-	nm <leader>d :call ToggleDeadKeys()<CR>
-	imap <leader>d <esc>:call ToggleDeadKeys()<CR>a
-	nm <leader>i :call ToggleIPA()<CR>
-	imap <leader>i <esc>:call ToggleIPA()<CR>a
-	nm <leader>q :call ToggleProse()<CR>
 
 " Shortcutting split navigation, saving a keypress:
 	map <C-h> <C-w>h
@@ -76,22 +65,44 @@ set clipboard+=unnamedplus
 " Check file in shellcheck:
 	map <leader>s :!clear && shellcheck %<CR>
 
-" Open my bibliography file in split
-	map <leader>b :vsp<space>$BIB<CR>
-	map <leader>r :vsp<space>$REFER<CR>
+" Quickly edit/reload this configuration file
+	nnoremap <leader>se :e $MYVIMRC<CR>
+	nnoremap <leader>so :so $MYVIMRC<CR>
 
-" Replace all is aliased to S.
-	nnoremap S :%s//g<Left><Left>
+" Fast saving
+	nmap <leader>w :w!<cr>
 
-" Compile document, be it groff/LaTeX/markdown/etc.
-	map <leader>c :w! \| !compiler <c-r>%<CR>
+"""""""
+" GOYO:
+"""""""
+" Goyo plugin makes text more readable when writing prose:
+	map <leader>f :Goyo \| set bg=light \| set linebreak<CR>
 
-" Open corresponding .pdf/.html or preview
-	map <leader>p :!opout <c-r>%<CR><CR>
 
-" Runs a script that cleans out tex build files whenever I close out of a .tex file.
-	autocmd VimLeave *.tex !texclear %
+"""""""
+" NERD TREE:
+"""""""
+	map <leader>n :NERDTreeToggle<CR>
+	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+    if has('nvim')
+        let NERDTreeBookmarksFile = stdpath('data') . '/NERDTreeBookmarks'
+    else
+        let NERDTreeBookmarksFile = '~/.vim' . '/NERDTreeBookmarks'
+    endif
 
+"""""""
+" VIMLING:
+"""""""
+	nm <leader>d :call ToggleDeadKeys()<CR>
+	imap <leader>d <esc>:call ToggleDeadKeys()<CR>a
+	nm <leader>i :call ToggleIPA()<CR>
+	imap <leader>i <esc>:call ToggleIPA()<CR>a
+	nm <leader>q :call ToggleProse()<CR>
+
+
+"""""""
+" VIMWIKI:
+"""""""
 " Ensure files are read as what I want:
 	let g:vimwiki_ext2syntax = {'.Rmd': 'markdown', '.rmd': 'markdown','.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
 	map <leader>v :VimwikiIndex
@@ -103,12 +114,44 @@ set clipboard+=unnamedplus
 " Save file as sudo on files that require root permission
 	cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 
-" Enable Goyo by default for mutt writing
-	autocmd BufRead,BufNewFile /tmp/neomutt* let g:goyo_width=80
-	autocmd BufRead,BufNewFile /tmp/neomutt* :Goyo | set bg=light
-	autocmd BufRead,BufNewFile /tmp/neomutt* map ZZ :Goyo\|x!<CR>
-	autocmd BufRead,BufNewFile /tmp/neomutt* map ZQ :Goyo\|q!<CR>
 
+"""""""""""""""""
+"  FZF- finder  "
+"""""""""""""""""
+
+map <leader>F <Esc><Esc>:Files!<CR>
+inoremap <leader>F <Esc><Esc>:Blines!<CR>
+map <leader>c <Esc><Esc>:BCommits!<CR>
+
+map <leader>G :Rg
+
+""""""""""""""""""""""""""""""
+" => Ulti Snips Plugin
+"""""""""""""""""""""""""""""""
+let g:UltiSnipsExpandTrigger='<tab>'
+let g:UltiSnipsJumpForwardTrigger='<tab>'
+let g:UltiSnipsJumpBackwardTrigger='<C-tab>'
+
+" fugitive git bindings
+nnoremap <leader>Ga :Git add %:p<CR><CR>
+nnoremap <leader>Gs :Gstatus<CR>
+nnoremap <leader>Gc :Gcommit -v -q<CR>
+nnoremap <leader>Gt :Gcommit -v -q %:p<CR>
+nnoremap <leader>Gd :Gdiff<CR>
+nnoremap <leader>Ge :Gedit<CR>
+nnoremap <leader>Gr :Gread<CR>
+nnoremap <leader>Gw :Gwrite<CR><CR>
+nnoremap <leader>Gl :silent! Glog<CR>:bot copen<CR>
+nnoremap <leader>Gp :Ggrep<Space>
+nnoremap <leader>Gm :Gmove<Space>
+nnoremap <leader>Gb :Git branch<Space>
+nnoremap <leader>Go :Git checkout<Space>
+nnoremap <leader>Gps :Dispatch! git push<CR>
+nnoremap <leader>Gpl :Dispatch! git pull<CR>
+
+"""""""
+" COMMON:
+"""""""
 " Automatically deletes all trailing whitespace and newlines at end of file on save.
 	autocmd BufWritePre * %s/\s\+$//e
 	autocmd BufWritepre * %s/\n\+\%$//e
