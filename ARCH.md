@@ -236,3 +236,7 @@ yay -S spotify
 ```
 
 source :  https://bbs.archlinux.org/viewtopic.php?id=257441
+
+- Install Matlab
+
+https://software.ntnu.no/ntnu/matlab

@@ -23,7 +23,9 @@ Plug 'kovetskiy/sxhkd-vim'
 "Plug 'ap/vim-css-color'
 Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-fugitive'
-
+Plug 'lervag/vimtex'
+Plug 'KeitaNakamura/tex-conceal.vim', {'for': 'tex'}
+Plug '907th/vim-auto-save'
 call plug#end()
 
 """""""
@@ -36,41 +38,44 @@ set nohlsearch
 set clipboard+=unnamedplus
 
 " Some basics:
-	nnoremap c "_c
-	set nocompatible
-	filetype plugin on
-	syntax on
-	set encoding=utf-8
-	set number relativenumber
-" Enable autocompletion:
-	set wildmode=longest,list,full
-" Disables automatic commenting on newline:
-	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+nnoremap c "_c
+set nocompatible
+filetype plugin on
+syntax on
+set encoding=utf-8
+set number relativenumber
 
-" Spell-check set to <leader>o, 'o' for 'orthography':
-	map <leader>o :setlocal spell! spelllang=en_us<CR>
+" Enable autocompletion:
+set wildmode=longest,list,full
+
+" Disables automatic commenting on newline:
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
 
 " Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
-	set splitbelow splitright
+set splitbelow splitright
 
 " Shortcutting split navigation, saving a keypress:
-	map <C-h> <C-w>h
-	map <C-j> <C-w>j
-	map <C-k> <C-w>k
-	map <C-l> <C-w>l
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
 
 " Replace ex mode with gq
-	map Q gq
+map Q gq
 
 " Check file in shellcheck:
-	map <leader>s :!clear && shellcheck %<CR>
+map <leader>s :!clear && shellcheck %<CR>
 
 " Quickly edit/reload this configuration file
-	nnoremap <leader>se :e $MYVIMRC<CR>
-	nnoremap <leader>so :so $MYVIMRC<CR>
+nnoremap <leader>se :e $MYVIMRC<CR>
+nnoremap <leader>so :so $MYVIMRC<CR>
 
 " Fast saving
-	nmap <leader>w :w!<cr>
+nmap <leader>w :w!<cr>
+
+" Save file as sudo on files that require root permission
+cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 
 """""""
 " GOYO:
@@ -104,15 +109,13 @@ set clipboard+=unnamedplus
 " VIMWIKI:
 """""""
 " Ensure files are read as what I want:
-	let g:vimwiki_ext2syntax = {'.Rmd': 'markdown', '.rmd': 'markdown','.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
-	map <leader>v :VimwikiIndex
-	let g:vimwiki_list = [{'path': '~/vimwiki', 'syntax': 'markdown', 'ext': '.md'}]
-	autocmd BufRead,BufNewFile /tmp/calcurse*,~/.calcurse/notes/* set filetype=markdown
-	autocmd BufRead,BufNewFile *.ms,*.me,*.mom,*.man set filetype=groff
-	autocmd BufRead,BufNewFile *.tex set filetype=tex
+"	let g:vimwiki_ext2syntax = {'.Rmd': 'markdown', '.rmd': 'markdown','.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
+"	map <leader>v :VimwikiIndex
+"	let g:vimwiki_list = [{'path': '~/vimwiki', 'syntax': 'markdown', 'ext': '.md'}]
+"	autocmd BufRead,BufNewFile /tmp/calcurse*,~/.calcurse/notes/* set filetype=markdown
+"	autocmd BufRead,BufNewFile *.ms,*.me,*.mom,*.man set filetype=groff
+"	autocmd BufRead,BufNewFile *.tex set filetype=tex
 
-" Save file as sudo on files that require root permission
-	cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 
 
 """""""""""""""""
@@ -149,19 +152,78 @@ nnoremap <leader>Go :Git checkout<Space>
 nnoremap <leader>Gps :Dispatch! git push<CR>
 nnoremap <leader>Gpl :Dispatch! git pull<CR>
 
+""""""""""""""""""""""""""""""
+" => vim-autosave plugin
+""""""""""""""""""""""""""""""
+
+function EnableAutoSave()
+  let g:auto_save = 1
+  let g:auto_save_events = ["InsertLeave", 'TextChanged',"CursorHold", 'CursorHoldI']
+  "autocmd TextChanged,TextChangedI <buffer> silent write
+endfunction
+
+" Autosave for tex
+au BufRead,BufNewFile *.tex :call EnableAutoSave()
+
+""""""""""""""""""""""""""""""
+" => Vimtex Plugin
+" Check :h vimtex-requirements for more
+""""""""""""""""""""""""""""""
+
+let maplocalleader = "\\"
+let g:Tex_DefaultTargetFormat='pdf'
+let g:vimtex_view_enabled=1
+let g:vimtex_view_automatic=1
+"let g:vimtex_view_general_viewer = 'zathura'
+let g:vimtex_view_method='zathura'
+"
+" Clean directory of generated files
+nnoremap <localleader>lc :VimtexStop<cr>:VimtexClean<cr>
+nnoremap <localleader>lca :VimtexStop<cr>:VimtexClean!<cr>
+
+" incscape-figures plug-in
+"inoremap <localleader>f <Esc>: silent exec '.!inkscape-figures create "'.getline('.').'" "'.b:vimtex.root.'/figures/"'<CR><CR>:w<CR>
+"nnoremap <localleader>f : silent exec '!inkscape-figures edit "'.b:vimtex.root.'/figures/" > /dev/null 2>&1 &'<CR><CR>:redraw!<CR>
+
+let g:tex_flavor='latex'
+let g:vimtex_quickfix_mode=0
+
+" Start client server for backward search from pdf to vim
+if empty(v:servername) && exists('*remote_startserver')
+  call remote_startserver('VIM')
+endif
+
+""""""""""""""""""""""""""""""
+" => Tex Conceal Plug-in
+"
+"""""""""""""""""""""""""""""""
+set conceallevel=1
+let g:tex_conceal='abdmg'
+hi Conceal ctermbg=none
+"let g:tex_conceal_frac=1
+
 """""""
 " COMMON:
-"""""""
+""""""
+" Spelling correction when pressing ctrl L
+setlocal spell
+set spelllang=en_gb
+inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u"
+
+" Spell-check set to <leader>o, 'o' for 'orthography':
+map <leader>O :setlocal spell! spelllang=en_us<CR>
+
 " Automatically deletes all trailing whitespace and newlines at end of file on save.
-	autocmd BufWritePre * %s/\s\+$//e
-	autocmd BufWritepre * %s/\n\+\%$//e
+autocmd BufWritePre * %s/\s\+$//e
+autocmd BufWritepre * %s/\n\+\%$//e
 
 " When shortcut files are updated, renew bash and ranger configs with new material:
-	autocmd BufWritePost files,directories !shortcuts
+autocmd BufWritePost files,directories !shortcuts
 " Run xrdb whenever Xdefaults or Xresources are updated.
-	autocmd BufWritePost *Xresources,*Xdefaults !xrdb %
+autocmd BufWritePost *Xresources,*Xdefaults !xrdb %
 " Update binds when sxhkdrc is updated.
-	autocmd BufWritePost *sxhkdrc !pkill -USR1 sxhkd
+autocmd BufWritePost *sxhkdrc !pkill -USR1 sxhkd
+
 
 " Turns off highlighting on the bits of code that are changed, so the line that is changed is highlighted but the actual text that has changed stands out on the line and is readable.
 if &diff

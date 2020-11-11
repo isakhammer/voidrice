@@ -88,3 +88,5 @@ function brightness(){
 }
 
 alias bb="brightness"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
