@@ -1,3 +1,7 @@
+Downloads/
+tmp/*
+work/*
+
 .Xauthority
 .cache
 .bashrc
@@ -18,9 +22,36 @@
 .config/zshnameddirrc
 .config/pulse
 .config.BraveSoftware
+.config/mimeapps.list
 
 .local/src
 .ssh
 
-work
 .pki
+
+.config/BraveSoftware/
+.config/GitKraken/
+.config/chromium/
+.config/dconf/
+.config/menus/
+.config/ncmpcpp/error.log
+.config/pavucontrol.ini
+.config/spotify/
+
+.gitkraken/
+.gnome/
+.gnupg/
+.local/lib/
+.local/share/applications/chrome-hmjkmjkepdijhoojdojkdfohbdgmmhki-Default.desktop
+.local/share/applications/mimeinfo.cache
+.local/share/cargo/
+.local/share/desktop-directories/
+.local/share/icons/
+.local/share/recently-used.xbel
+.local/share/zathura/
+.todoist.cache.json
+.todoist.config.json
+
+
+.web_config
+webcam*
