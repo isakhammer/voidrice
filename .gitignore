@@ -54,30 +54,30 @@ work/*
 
 
 .web_config
- .config/gtk-2.0/gtkfilechooser.ini
+.config/gtk-2.0/gtkfilechooser.ini
 
- fzf.bash
- fzf.zsh
- fzf/
- java/
- local/include/
- local/share/lf/
- matlab/
+fzf.bash
+fzf.zsh
+fzf/
+java/
+local/include/
+local/share/lf/
+matlab/
 
- .config/cef_user_data/
- .config/gtk-2.0/gtkfilechooser.ini
- .fzf.bash
- .fzf.zsh
- .fzf/
- .java/
- .local/include/
- .local/share/Steam/
- .local/share/applications/Portal 2.desktop
- .local/share/applications/Portal.desktop
- .local/share/lf/
- .local/share/vulkan/
- .matlab/
- .pulse-cookie
- .steam/
- .steampath
- .steampid
+.config/cef_user_data/
+.config/gtk-2.0/gtkfilechooser.ini
+.fzf.bash
+.fzf.zsh
+.fzf/
+.java/
+.local/include/
+.local/share/Steam/
+.local/share/applications/Portal 2.desktop
+.local/share/applications/Portal.desktop
+.local/share/lf/
+.local/share/vulkan/
+.matlab/
+.pulse-cookie
+.steam/
+.steampath
+.steampid
