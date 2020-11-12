@@ -26,6 +26,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'lervag/vimtex'
 Plug 'KeitaNakamura/tex-conceal.vim', {'for': 'tex'}
 Plug '907th/vim-auto-save'
+Plug 'metakirby5/codi.vim'
+Plug 'unblevable/quick-scope' 
 call plug#end()
 
 """""""
