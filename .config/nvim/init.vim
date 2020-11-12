@@ -232,3 +232,16 @@ autocmd BufWritePost *sxhkdrc !pkill -USR1 sxhkd
 if &diff
     highlight! link DiffText MatchParen
 endif
+
+
+"""""""
+" CODI:
+""""""
+
+" Change the color
+highlight CodiVirtualText guifg=cyan
+
+let g:codi#virtual_text_prefix = "❯ "
+let g:codi#aliases = {
+                   \ 'javascript.jsx': 'javascript',
+                   \ }
