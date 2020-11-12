@@ -54,3 +54,13 @@ work/*
 
 
 .web_config
+ .config/gtk-2.0/gtkfilechooser.ini
+
+ fzf.bash
+ fzf.zsh
+ fzf/
+ java/
+ local/include/
+ local/share/lf/
+ matlab/
+
