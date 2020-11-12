@@ -209,15 +209,16 @@ hi Conceal ctermbg=none
 """"""
 " Spelling correction when pressing ctrl L
 setlocal spell
+hi SpellBad    ctermfg=none      ctermbg=none     cterm=none      guifg=none   guibg=none gui=none
 set spelllang=en_gb
-inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u"
+inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 
 " Spell-check set to <leader>o, 'o' for 'orthography':
-map <leader>O :setlocal spell! spelllang=en_us<CR>
+"map <leader>O :setlocal spell! spelllang=en_us<CR>
 
-" Automatically deletes all trailing whitespace and newlines at end of file on save.
-autocmd BufWritePre * %s/\s\+$//e
-autocmd BufWritepre * %s/\n\+\%$//e
+"" Automatically deletes all trailing whitespace and newlines at end of file on save.
+"autocmd BufWritePre * %s/\s\+$//e
+"autocmd BufWritepre * %s/\n\+\%$//e
 
 " When shortcut files are updated, renew bash and ranger configs with new material:
 autocmd BufWritePost files,directories !shortcuts
