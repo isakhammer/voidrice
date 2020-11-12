@@ -97,15 +97,6 @@ cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
         let NERDTreeBookmarksFile = '~/.vim' . '/NERDTreeBookmarks'
     endif
 
-"""""""
-" VIMLING:
-"""""""
-	nm <leader>d :call ToggleDeadKeys()<CR>
-	imap <leader>d <esc>:call ToggleDeadKeys()<CR>a
-	nm <leader>i :call ToggleIPA()<CR>
-	imap <leader>i <esc>:call ToggleIPA()<CR>a
-	nm <leader>q :call ToggleProse()<CR>
-
 
 """""""
 " VIMWIKI:
@@ -208,10 +199,10 @@ hi Conceal ctermbg=none
 " COMMON:
 """"""
 " Spelling correction when pressing ctrl L
-setlocal spell
-hi SpellBad    ctermfg=none      ctermbg=none     cterm=none      guifg=none   guibg=none gui=none
-set spelllang=en_gb
-inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
+"setlocal spell
+"hi SpellBad    ctermfg=none      ctermbg=none     cterm=none      guifg=none   guibg=none gui=none
+"set spelllang=en_gb
+"inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 
 " Spell-check set to <leader>o, 'o' for 'orthography':
 "map <leader>O :setlocal spell! spelllang=en_us<CR>
