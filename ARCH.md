@@ -240,3 +240,38 @@ source :  https://bbs.archlinux.org/viewtopic.php?id=257441
 - Install Matlab
 
 https://software.ntnu.no/ntnu/matlab
+
+
+- Tmux problem
+
+
+```
+locale: Cannot set LC_CTYPE to default locale: No such file or directory
+locale: Cannot set LC_MESSAGES to default locale: No such file or directory
+locale: Cannot set LC_ALL to default locale: No such file or directory
+```
+
+Your locale is probably wrong. 
+
+run 
+
+```
+locale
+```
+
+Then the output should be ok.
+
+If not go to
+
+```
+# should be nn_NO.UTF-8
+vim /etc/locale.gen
+
+# set language
+# LANG=nn_NO.UTF.8
+vim /etc/locale.conf
+
+locale-gen
+
+
+```
