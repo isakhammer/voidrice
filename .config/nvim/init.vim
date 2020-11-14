@@ -73,8 +73,10 @@ map <leader>s :!clear && shellcheck %<CR>
 nnoremap <leader>se :e $MYVIMRC<CR>
 nnoremap <leader>so :so $MYVIMRC<CR>
 
-" Fast saving
+" Fast saving and quitting
 nmap <leader>w :w!<cr>
+nmap <leader>q :qa!<CR>
+nmap <leader>x :wqa!<CR>
 
 " Save file as sudo on files that require root permission
 cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
