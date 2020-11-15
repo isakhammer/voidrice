@@ -28,7 +28,10 @@ Plug 'KeitaNakamura/tex-conceal.vim', {'for': 'tex'}
 Plug '907th/vim-auto-save'
 Plug 'metakirby5/codi.vim'
 Plug 'unblevable/quick-scope' 
+Plug 'jpalardy/vim-slime'
+Plug 'JuliaEditorSupport/julia-vim'
 call plug#end()
+
 
 """""""
 " BASICS
@@ -85,7 +88,7 @@ cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 " GOYO:
 """""""
 " Goyo plugin makes text more readable when writing prose:
-	map <leader>f :Goyo \| set bg=light \| set linebreak<CR>
+	map <leader>y :Goyo \| set bg=light \| set linebreak<CR>
 
 
 """""""
@@ -238,3 +241,6 @@ let g:codi#virtual_text_prefix = "❯ "
 let g:codi#aliases = {
                    \ 'javascript.jsx': 'javascript',
                    \ }
+map <leader>f :Codi<cr>
+
+"map <leader>r :w!<CR>:silent !chmod +x %:p<CR>:silent !%:p 2>&1 | tee ~/.vim/output<CR>: split $HOME/.cache/nvim/output<CR>:redraw!<CR>
