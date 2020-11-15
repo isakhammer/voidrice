@@ -91,7 +91,14 @@ codi() {
     hi ColorColumn ctermbg=NONE |\
     hi VertSplit ctermbg=NONE |\
     hi NonText ctermfg=0 |\
-    Codi $syntax" "$@"
+    Codi $syntax" \
+    -c \
+    ":Goyo |\ set bg=light |\ 
+    set linebreak<CR>" \
+    "$@" \
+    +star \
+    "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/calc.py" 
 }
+
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
