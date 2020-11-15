@@ -52,7 +52,6 @@ work/*
 .todoist.cache.json
 .todoist.config.json
 
-
 .web_config
 .config/gtk-2.0/gtkfilechooser.ini
 
