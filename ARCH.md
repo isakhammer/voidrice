@@ -275,3 +275,8 @@ locale-gen
 
 
 ```
+- Steam on Arch
+	Follow this link  https://www.chrisatmachine.com/Linux/08-steam-on-linux/
+- Fix image preview in ranger
+	* Need to install https://github.com/seebye/ueberzug
+	* Potentially also install w3m.
