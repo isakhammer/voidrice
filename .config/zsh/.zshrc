@@ -87,16 +87,8 @@ codi() {
   shift
   vim -c \
     "let g:startify_disable_at_vimenter = 1 |\
-    set bt=nofile ls=0 noru nonu nornu |\
-    hi ColorColumn ctermbg=NONE |\
-    hi VertSplit ctermbg=NONE |\
-    hi NonText ctermfg=0 |\
     Codi $syntax" \
-    -c \
-    ":Goyo |\ set bg=light |\ 
-    set linebreak<CR>" \
     "$@" \
-    +star \
     "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/calc.py" 
 }
 
