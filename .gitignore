@@ -80,3 +80,9 @@ matlab/
 .steam/
 .steampath
 .steampid
+.eduroam/
+.julia/
+.local/share/calcurse/
+.local/share/jupyter/
+.sc-iminfo
+.slime_paste
