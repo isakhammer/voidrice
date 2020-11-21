@@ -8,6 +8,7 @@ if ! filereadable(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autolo
 endif
 
 call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"'))
+
 Plug 'junegunn/fzf', { 'dir': '~/.local/lib/fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-surround'
@@ -30,6 +31,16 @@ Plug 'metakirby5/codi.vim'
 Plug 'unblevable/quick-scope' 
 Plug 'jpalardy/vim-slime'
 Plug 'JuliaEditorSupport/julia-vim'
+
+Plug 'ncm2/ncm2'
+Plug 'roxma/nvim-yarp'
+Plug 'ncm2/ncm2-bufword'
+Plug 'ncm2/ncm2-path'
+Plug 'ncm2/ncm2-ultisnips'
+" NOTE: you need to install completion sources to get completions. Check
+" our wiki page for a list of sources: https://github.com/ncm2/ncm2/wiki
+Plug 'ncm2/ncm2-jedi' 
+Plug 'ncm2/ncm2-vim' | Plug 'Shougo/neco-vim'
 call plug#end()
 
 
@@ -201,6 +212,36 @@ let g:tex_conceal='abdmg'
 hi Conceal ctermbg=none
 "let g:tex_conceal_frac=1
 
+""""""""""""""""""""""""""""""
+" =>  NCM2
+"
+"""""""""""""""""""""""""""""""
+
+" enable ncm2 for all buffers
+autocmd BufEnter * call ncm2#enable_for_buffer()
+
+" IMPORTANT: :help Ncm2PopupOpen for more information
+set completeopt=noinsert,menuone,noselect
+
+" suppress the annoying 'match x of y', 'The only match' and 'Pattern not
+" found' messages
+set shortmess+=c
+
+" CTRL-C doesn't trigger the InsertLeave autocmd . map to <ESC> instead.
+"inoremap <c-c> <ESC>
+
+" When the <Enter> key is pressed while the popup menu is visible, it only
+" hides the menu. Use this mapping to close the menu and also start a new
+" line.
+inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
+
+" Use <TAB> to select the popup menu:
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
+
+
 """""""
 " COMMON:
 """"""
@@ -215,6 +256,9 @@ hi Conceal ctermbg=none
 
 "" Automatically deletes all trailing whitespace and newlines at end of file on save.
 "autocmd BufWritePre * %s/\s\+$//e
+
+
+
 "autocmd BufWritepre * %s/\n\+\%$//e
 
 " When shortcut files are updated, renew bash and ranger configs with new material:
