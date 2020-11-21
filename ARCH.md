@@ -280,3 +280,13 @@ locale-gen
 - Fix image preview in ranger
 	* Need to install https://github.com/seebye/ueberzug
 	* Potentially also install w3m.
+- Docker
+	Tried to run 
+```
+dockerd 
+```
+But got daemon json error.
+Fix is here:
+	https://stackoverflow.com/questions/21871479/docker-cant-connect-to-docker-daemon
+* For docker service setup
+	https://stackoverflow.com/questions/45335316/unable-to-configure-the-docker-daemon-with-file-etc-docker-daemon-json-eof
