@@ -31,14 +31,15 @@ Plug 'metakirby5/codi.vim'
 Plug 'unblevable/quick-scope' 
 Plug 'jpalardy/vim-slime'
 Plug 'JuliaEditorSupport/julia-vim'
+Plug 'jiangmiao/auto-pairs'
 
 Plug 'ncm2/ncm2'
 Plug 'roxma/nvim-yarp'
 Plug 'ncm2/ncm2-bufword'
 Plug 'ncm2/ncm2-path'
 Plug 'ncm2/ncm2-ultisnips'
-" NOTE: you need to install completion sources to get completions. Check
-" our wiki page for a list of sources: https://github.com/ncm2/ncm2/wiki
+"" NOTE: you need to install completion sources to get completions. Check
+"" our wiki page for a list of sources: https://github.com/ncm2/ncm2/wiki
 Plug 'ncm2/ncm2-jedi' 
 Plug 'ncm2/ncm2-vim' | Plug 'Shougo/neco-vim'
 call plug#end()
@@ -95,6 +96,9 @@ nmap <leader>x :wqa!<CR>
 " Save file as sudo on files that require root permission
 cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 
+" buffer mappings
+nnoremap <leader>b :buffers<CR>:buffer<space>
+
 """""""
 " GOYO:
 """""""
@@ -141,9 +145,9 @@ map <leader>G :Rg
 """"""""""""""""""""""""""""""
 " => Ulti Snips Plugin
 """""""""""""""""""""""""""""""
-let g:UltiSnipsExpandTrigger='<tab>'
-let g:UltiSnipsJumpForwardTrigger='<tab>'
-let g:UltiSnipsJumpBackwardTrigger='<C-tab>'
+let g:UltiSnipsExpandTrigger='<C-ø>'
+let g:UltiSnipsJumpForwardTrigger='<C-ø>'
+let g:UltiSnipsJumpBackwardTrigger='<C-ø>'
 
 " fugitive git bindings
 nnoremap <leader>Ga :Git add %:p<CR><CR>
@@ -289,3 +293,11 @@ let g:codi#aliases = {
 map <leader>f :Codi<cr>
 
 "map <leader>r :w!<CR>:silent !chmod +x %:p<CR>:silent !%:p 2>&1 | tee ~/.vim/output<CR>: split $HOME/.cache/nvim/output<CR>:redraw!<CR>
+
+
+"""""""
+" Autopair:
+""""""
+
+let g:AutoPairsFlyMode = 0
+let g:AutoPairsShortcutBackInsert = '<M-b>'
