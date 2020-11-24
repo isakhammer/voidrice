@@ -28,6 +28,8 @@ do
 
 	# If it is discharging and 25% or less, we will add a ❗ as a warning.
 	 [ "$capacity" -le 25 ] && [ "$status" = "🔋" ] && warn="❗"
+	 [ "$capacity" -le 6 ] && [ "$status" = "🔋" ] && notify-send "Low battery. Sleep in 2min."
+	 [ "$capacity" -le 4 ] && [ "$status" = "🔋" ] && sleep 10 && systemctl suspend
 
 	printf "%s%s%s%% " "$status" "$warn" "$capacity"
 	unset warn
