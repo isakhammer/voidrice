@@ -42,7 +42,7 @@ set recolor-lightcolor          "#282828" # bg
 set recolor-darkcolor           "#ebdbb2" # fg
 #set recolor                     "true"
 set recolor-keephue             true      # keep original color
-
+set adjust-open "best-fit"
 set sandbox none
 set statusbar-h-padding 0
 set statusbar-v-padding 0
