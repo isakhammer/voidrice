@@ -1,4 +1,4 @@
-
+j
 Follow this guide https://averagelinuxuser.com/a-step-by-step-arch-linux-installation-guide/
 
 **English keyboad**
@@ -290,3 +290,16 @@ Fix is here:
 	https://stackoverflow.com/questions/21871479/docker-cant-connect-to-docker-daemon
 * For docker service setup
 	https://stackoverflow.com/questions/45335316/unable-to-configure-the-docker-daemon-with-file-etc-docker-daemon-json-eof
+
+- Got lots or errors when installing virtualbox
+```
+ error: failed retrieving file 'libxkbcommon-x11-1.0. The requested URL returned error: 404 error
+```
+You need to run
+```
+pacman -Syu --debug
+```
+ and 
+```
+pacman -Syy
+```
