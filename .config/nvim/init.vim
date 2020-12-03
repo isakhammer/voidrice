@@ -28,7 +28,7 @@ Plug 'lervag/vimtex'
 Plug 'KeitaNakamura/tex-conceal.vim', {'for': 'tex'}
 Plug '907th/vim-auto-save'
 Plug 'metakirby5/codi.vim'
-Plug 'unblevable/quick-scope' 
+"Plug 'unblevable/quick-scope' 
 Plug 'jpalardy/vim-slime'
 Plug 'JuliaEditorSupport/julia-vim'
 Plug 'jiangmiao/auto-pairs'
