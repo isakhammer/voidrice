@@ -12,3 +12,9 @@ sc  $HOME/.local/bin
 src $HOME/.local/src
 vv  ${XDG_VIDEOS_DIR:-$HOME/Videos}
 ww   ${XDG_WORK_DIR:-$HOME/work}
+
+wwr 	${XDG_WORK_DIR:-$HOME/work}/research
+wwm 	${XDG_WORK_DIR:-$HOME/work}/research/mathematics
+wwms 	${XDG_WORK_DIR:-$HOME/work}/research/mathematics/statistics
+wwmn 	${XDG_WORK_DIR:-$HOME/work}/research/mathematics/numerical-analysis
+wwmf 	${XDG_WORK_DIR:-$HOME/work}/research/mathematics/functional-analysis
