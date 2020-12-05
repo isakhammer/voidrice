@@ -1,3 +1,6 @@
+# Default recolor
+set recolor                     "false"
+
 # setting recolor-keep true will keep any color your pdf has.
 # if it is false, it'll just be black and white
 set recolor-keephue             "true"
@@ -40,8 +43,9 @@ set render-loading-fg           "#ebdbb2" # fg
 # Recolor book content's color
 set recolor-lightcolor          "#282828" # bg
 set recolor-darkcolor           "#ebdbb2" # fg
-#set recolor                     "true"
+
 set recolor-keephue             true      # keep original color
+
 set adjust-open "best-fit"
 set sandbox none
 set statusbar-h-padding 0

@@ -4,9 +4,11 @@ bw	${XDG_CONFIG_HOME:-$HOME/.config}/bookmarks
 cfa	${XDG_CONFIG_HOME:-$HOME/.config}/aliasrc
 cfz	$ZDOTDIR/.zshrc
 cfv	${XDG_CONFIG_HOME:-$HOME/.config}/nvim/init.vim
-cft	${XDG_CONFIG_HOME:-$HOME/.config}/tmux/.tmux.conf
+cft	${XDG_CONFIG_HOME:-$HOME/.config}/tmux/tmux.conf
+cfr	${XDG_CONFIG_HOME:-$HOME/.config}/ranger/rc.conf
 cfm	${XDG_CONFIG_HOME:-$HOME/.config}/mutt/muttrc
 cfx	${XDG_CONFIG_HOME:-$HOME/.config}/Xresources
+cfza	${XDG_CONFIG_HOME:-$HOME/.config}/zathura/zathurarc
 cfu	${XDG_CONFIG_HOME:-$HOME/.config}/newsboat/urls
 cfn	${XDG_CONFIG_HOME:-$HOME/.config}/newsboat/config
 cfmb	${XDG_CONFIG_HOME:-$HOME/.config}/ncmpcpp/bindings
