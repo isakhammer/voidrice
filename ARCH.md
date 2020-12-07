@@ -302,4 +302,23 @@ pacman -Syu --debug
  and 
 ```
 pacman -Syy
+
+```
+# Latex```
+install
+```
+yay -Sy texlive-most
+
+```
+
+# WPA Guis
+```
+yay -Sy wpa-cute 
+
+```
+and
+```
+yay -Sy wpa_supplicant_gui 
+#Launch by type wpa_gui
+
 ```
