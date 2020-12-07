@@ -86,3 +86,4 @@ matlab/
 .local/share/jupyter/
 .sc-iminfo
 .slime_paste
+.config/ranger/shortcuts.conf
