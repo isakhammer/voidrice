@@ -13,8 +13,8 @@ src $HOME/.local/src
 vv  ${XDG_VIDEOS_DIR:-$HOME/Videos}
 ww   ${XDG_WORK_DIR:-$HOME/work}
 
-wwr 	${XDG_WORK_DIR:-$HOME/work}/research
-wwm 	${XDG_WORK_DIR:-$HOME/work}/research/mathematics
-wwms 	${XDG_WORK_DIR:-$HOME/work}/research/mathematics/statistics
-wwmn 	${XDG_WORK_DIR:-$HOME/work}/research/mathematics/numerical-analysis
-wwmf 	${XDG_WORK_DIR:-$HOME/work}/research/mathematics/functional-analysis
+wr 	${XDG_WORK_DIR:-$HOME/work}/research
+wm 	${XDG_WORK_DIR:-$HOME/work}/research/mathematics
+wms 	${XDG_WORK_DIR:-$HOME/work}/research/mathematics/statistics
+wmn 	${XDG_WORK_DIR:-$HOME/work}/research/mathematics/numerical-analysis
+wmf 	${XDG_WORK_DIR:-$HOME/work}/research/mathematics/functional-analysis
